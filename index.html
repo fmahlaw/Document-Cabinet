@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document Manager</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 40px;
+      }
+      .form-group {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+      }
+      label {
+        margin-right: 10px;
+        font-weight: bold;
+      }
+      input[type="file"] {
+        display: none;
+      }
+      .btn {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        color: #333;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .btn:hover {
+        background-color: #ccc;
+        color: #fff;
+      }
+      .document-list {
+        margin-top: 20px;
+        list-style: none;
+        padding: 0;
+      }
+      .document-list li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+      }
+      .document-list li a {
+        font-weight: bold;
+        color: #333;
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+      .document-list li a:hover {
+        color: #ccc;
+      }
+      .doc-size {
+        font-size: 0.8em;
+        color: #666;
+      }
+      #preview-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+      }
+      #preview-modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+      }
+      #edit-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+      }
+      #edit-modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+      }
+      .input-group {
+        margin-top: 10px;
+      }
+      .input-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      .input-group input {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .input-group .btn {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Document Manager</h1>
+    <div class="form-group">
+      <label for="file-input">Choose a file:</label>
+      <input type="file" id="file-input" />
+      <div class="btn" id="upload-btn">Upload</div>
+    </div>
+
+    <ul class="document-list" id="document-list">
+      <!-- Existing document items will be added here dynamically -->
+    </ul>
+
+    <div id="preview-modal">
+      <div id="preview-modal-content">
+        <h2 id="preview-modal-title"></h2>
+        <div id="preview-modal-body"></div>
+        <div class="btn" id="preview-modal-close-btn">Close</div>
+      </div>
+    </div>
+
+    <div id="edit-modal">
+      <div id="edit-modal-content">
+        <h2>Edit Document</h2>
+        <div class="input-group">
+          <label for="edit-modal-title-input">Title:</label>
+          <input type="text" id="edit-modal-title-input" />
+        </div>
+        <div class="input-group">
+          <label for="edit-modal-description-input">Description:</label>
+          <input type="text" id="edit-modal-description-input" />
+        </div>
+        <div class="btn" id="edit-modal-save-btn">Save</div>
+        <div class="btn" id="edit-modal-cancel-btn">Cancel</div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
